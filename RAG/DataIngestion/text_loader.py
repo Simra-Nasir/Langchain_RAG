@@ -8,10 +8,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Initialize Groq LLM
+from dotenv import load_dotenv
+import os
+from langchain_groq import ChatGroq
+
+load_dotenv()
+
 model = ChatGroq(
-    model="llama-3.1-8b-instant",   # or "mixtral-8x7b-32768"
+    model="llama-3.1-8b-instant",
     temperature=0.3
+    groq_api_key=os.getenv("GROQ_API_KEY")
 )
+
+print("Groq model initialized successfully")
+
 
 # Prompt template
 prompt = PromptTemplate(
